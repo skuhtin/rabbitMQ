@@ -1,0 +1,1 @@
+docker run -it --rm --name rabbit --hostname my-rabbit -v {path to localstore}:/var/lib/rabbitmq -v {path to db repo}:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3-management

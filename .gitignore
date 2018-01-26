@@ -1,0 +1,10 @@
+
+/.idea/
+/rabbittest.iml
+/common/target/
+/common/common.iml
+listener/listener.iml
+Would skip repository listener/src/main/java/ua/skuhtin
+/listener/target/
+/producer/target/
+/producer/producer.iml

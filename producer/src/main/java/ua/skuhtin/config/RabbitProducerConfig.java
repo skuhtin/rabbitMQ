@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.converter.MappingJackson2MessageConverter;
+import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 
 
 @Configuration
@@ -54,6 +56,18 @@ public class RabbitProducerConfig {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
+    }
+
+    @Bean
+    public MappingJackson2MessageConverter jackson2Converter() {
+        return new MappingJackson2MessageConverter();
+    }
+
+    @Bean
+    public DefaultMessageHandlerMethodFactory myHandlerMethodFactory() {
+        DefaultMessageHandlerMethodFactory factory = new DefaultMessageHandlerMethodFactory();
+        factory.setMessageConverter(jackson2Converter());
+        return factory;
     }
 
     @Bean
